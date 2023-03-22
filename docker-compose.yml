@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  nginx-proxy:
+    image: jwilder/nginx-proxy
+    ports:
+      - "8080:80"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock
+      
+  ocv-01:
+    image: opencv
+    environment:
+     - NGINX_HOST=m
+     - NGINX_PORT=8080
+
+  ocv-02:
+    image: opencv
+    environment:
+      - NGINX_HOST=m
+      - NGINX_PORT=8080
+
+  ocv-03:
+    image: opencv
+    environment:
+     - NGINX_HOST=m
+     - NGINX_PORT=8080
